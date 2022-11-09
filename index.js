@@ -1,5 +1,6 @@
 const express = require("express"),
   app = express(),
+  port = process.env.PORT || 8000,
   mongoose = require("mongoose"),
   TodoTask = require("./models/TodoTask"),
   passport = require("passport"),
@@ -9,7 +10,7 @@ const express = require("express"),
   User = require("./models/user"),
   dotenv = require("dotenv");
 
-const server = http.createServer(process.env.PORT || 8000);
+let server = require("http").Server(app);
 dotenv.config();
 
 app.use("/static", express.static("public"));
@@ -33,7 +34,7 @@ mongoose.connect(process.env.DB_CONNECT, (err) => {
   if (err) throw err;
   console.log("connected to MongoDB");
   server.listen(port, () => {
-    console.log(`App Running on port :${port}`);
+    console.log(`App is running on port :${port}`);
   });
 });
 
