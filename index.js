@@ -1,6 +1,5 @@
 const express = require("express"),
   app = express(),
-  port = 3000,
   mongoose = require("mongoose"),
   TodoTask = require("./models/TodoTask"),
   passport = require("passport"),
@@ -8,8 +7,9 @@ const express = require("express"),
   LocalStrategy = require("passport-local"),
   passportLocalMongoose = require("passport-local-mongoose"),
   User = require("./models/user"),
-  Swal = require("sweetalert2"),
   dotenv = require("dotenv");
+
+const server = http.createServer(process.env.PORT || 3000);
 dotenv.config();
 
 app.use("/static", express.static("public"));
