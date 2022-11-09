@@ -8,7 +8,9 @@ const express = require("express"),
   LocalStrategy = require("passport-local"),
   passportLocalMongoose = require("passport-local-mongoose"),
   User = require("./models/user"),
-  Swal = require("sweetalert2");
+  Swal = require("sweetalert2"),
+  dotenv = require("dotenv");
+dotenv.config();
 
 app.use("/static", express.static("public"));
 app.use(
@@ -27,7 +29,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //connection to db
-mongoose.connect("mongodb://localhost:27017/todo_app", (err) => {
+mongoose.connect(process.env.DB_CONNECT, (err) => {
   if (err) throw err;
   console.log("connected to MongoDB");
   app.listen(port, () => {
