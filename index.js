@@ -9,7 +9,7 @@ const express = require("express"),
   User = require("./models/user"),
   dotenv = require("dotenv");
 
-const server = http.createServer(process.env.PORT || 3000);
+const server = http.createServer(process.env.PORT || 8000);
 dotenv.config();
 
 app.use("/static", express.static("public"));
@@ -32,8 +32,8 @@ app.use(passport.session());
 mongoose.connect(process.env.DB_CONNECT, (err) => {
   if (err) throw err;
   console.log("connected to MongoDB");
-  app.listen(port, () => {
-    console.log(`Listening to http://localhost:${port}`);
+  server.listen(port, () => {
+    console.log(`App Running on port :${port}`);
   });
 });
 
