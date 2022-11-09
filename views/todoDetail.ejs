@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Todo App</title>
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="todo-container">
+        <h2>Todo List Detail
+        </h2>
+        <div>
+            <a href="/edit/<%= todoTasks._id %>" class="edit">
+                <i class="fa fa-edit"></i>
+            </a>
+            <a href="/remove/<%= todoTasks._id %>" class="remove">
+                <i class="fa fa-trash"></i>
+            </a>
+        </div>
+        <div class="todo">
+            <ul class="todo-list">
+                <li class="todo-list-item">
+                    <div class="todo-list-item-name">
+                        Todo: <%= todoTasks.content %>
+                    </div>
+                </li>
+                <li class="todo-list-item">
+                    <div class="todo-list-item-name">
+                        Created at: <%= todoTasks.date %>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Todo App</title>
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="todo-container">
+        <h2>Todo List</h2>
+        <div>
+            <a href="/removeAll" class="remove">Remove All
+                <i class="fa fa-trash"></i>
+            </a>
+        </div>
+        <div class="todo">
+            <form action="/" method="POST" class="todo-header">
+                <input type="text" name="content" autocomplete="off">
+                <button type="submit"><i class="fa-solid fa fa-plus"></i></button>
+            </form>
+            <ul class="todo-list">
+                <% todoTasks.forEach(details=> { %>
+                    <li class="todo-list-item">
+                        <div class="todo-list-item-name">
+                            <%= details.content %>
+                        </div>
+                        <a href="/edit/<%= details._id %>" class="edit">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a href="/detail/<%= details._id %>" class="edit">
+                            <i class="fa fa-info"></i>
+                        </a>
+                        <a href="/remove/<%= details._id %>" class="remove">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </li>
+                    <% }) %>
+            </ul>
+        </div>
+    </div>
+</body>
